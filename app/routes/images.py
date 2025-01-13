@@ -5,13 +5,13 @@ from ..models import Image, db
 
 image_blp = Blueprint("image", "image", description="Operations On Image", url_prefix="/image")
 
-
+# 전체 이미지 조회
 @image_blp.route('/')
 class ImageList(MethodView):
     def get(self):
         imgs = Image.query.all()
         return jsonify([img.to_dict() for img in imgs]), 200
-
+# 이미지 생성
 @image_blp.route('/edit')
 class ImageCreate(MethodView):
     def post(self):
@@ -27,6 +27,7 @@ class ImageCreate(MethodView):
         db.session.commit()
 
         return jsonify({"msg": "Successfully created Img"}), 201
+
 
 @image_blp.route('/edit/<int:image_id>')
 class ImageModify(MethodView):

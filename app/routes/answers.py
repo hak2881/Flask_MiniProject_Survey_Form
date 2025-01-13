@@ -4,13 +4,13 @@ from flask_smorest import Blueprint
 from ..models import Answer, db
 
 answer_blp = Blueprint('Answer', 'answer', url_prefix='/answer')
-
+# 모든 답변 조회
 @answer_blp.route('/')
 class AnswerList(MethodView):
     def get(self):
         answers = Answer.query.all()  
         return jsonify([answer.to_dict() for answer in answers]), 201
-    
+# 답변 정보 생성
 @answer_blp.route('/edit')
 class AnswerCreate(MethodView):
     def post(self):
@@ -19,7 +19,8 @@ class AnswerCreate(MethodView):
         db.session.add(new_answer)
         db.session.commit()
         return jsonify({"msg": "Created Answer"}), 201
-    
+
+# 답변 조회    
 @answer_blp.route('/<int:user_id>/<int:choice_id>')
 class AnswerGet(MethodView):
     def get(self,user_id, choice_id):
@@ -27,11 +28,21 @@ class AnswerGet(MethodView):
         if not answers:
             return {"msg":"No Found Data"}
         return [answer.to_dict() for answer in answers]
-
+    
+# 특정 답변 수정
 @answer_blp.route('/edit/<int:user_id>/<int:choice_id>')
 class PostAnswer(MethodView):
-    def post(self,user_id, choice_id):
-        new_answer = Answer(user_id=user_id, choice_id=choice_id)
-        db.session.add(new_answer)
+    def put(self, user_id, choice_id):
+        # choice_id에 맞는 Answer 객체를 찾기
+        answer = Answer.query.filter(Answer.user_id == user_id, Answer.choice_id == choice_id).first()
+
+        if not answer:
+            return jsonify({"msg": "Not found user_id or choice_id"}), 404
+        data = request.json
+        for key, value in data.items():
+            if hasattr(answer, key):  # answer 객체에 해당 속성이 있는지 확인
+                setattr(answer, key, value)  # 해당 속성을 수정
+
         db.session.commit()
-        return new_answer.to_dict()
+        
+        return jsonify(answer.to_dict()), 200  # 수정된 객체 반환
