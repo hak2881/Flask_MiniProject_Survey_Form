@@ -5,7 +5,7 @@ db = SQLAlchemy()
 
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:##Dlwps753@localhost/survey'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:##비번@localhost/survey'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_POOL_SIZE = 10
     SQLALCHEMY_POOL_TIMEOUT = 5
