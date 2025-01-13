@@ -5,8 +5,7 @@ from ..models import Question, db
 
 
 question_blp = Blueprint(
-    'Questions', 'questions', description="Operations on Questions", url_prefix='/questions'
-)
+    'Questions', 'questions', description="Operations on Questions", url_prefix='/questions')
 
 
 
