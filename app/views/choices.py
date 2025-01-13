@@ -2,6 +2,7 @@ from flask_smorest import Blueprint
 from flask import request, jsonify
 from flask.views import MethodView
 from ..models import Choices, db
+from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, get_jwt_identity
 
 choices_blp = Blueprint('Choices', 'choices', description="Operations on Choices", url_prefix='/choices')
 

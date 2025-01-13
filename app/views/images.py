@@ -6,8 +6,9 @@ from ..models import Image, db
 image_blp = Blueprint("image", "image", description="Operations On Image", url_prefix="/image")
 
 
-@image_blp.route('/')
+
 class ImageList(MethodView):
+    @image_blp.route('/')
     def get(self):
         imgs = Image.query.all()
         return jsonify([{
@@ -32,6 +33,7 @@ class ImageList(MethodView):
 
 @image_blp.route('/<int:image_id>')
 class ImageResource(MethodView):
+
     def put(self, image_id):
         # 특정 이미지 수정
         img = Image.query.get_or_404(image_id)
@@ -42,6 +44,7 @@ class ImageResource(MethodView):
 
         db.session.commit()
         return jsonify({"msg": "Successfully updated Img"}), 200
+
 
     def delete(self, image_id):
         # 특정 이미지 삭제

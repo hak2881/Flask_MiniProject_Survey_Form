@@ -3,13 +3,15 @@ from flask import request, jsonify
 from flask.views import MethodView
 from ..models import Question, db
 
+
 question_blp = Blueprint(
     'Questions', 'questions', description="Operations on Questions", url_prefix='/questions'
 )
 
 
-@question_blp.route('/')
+
 class QuestionList(MethodView):
+    @question_blp.route('/')
     def get(self):
         # 모든 질문 조회
         questions = Question.query.all()
@@ -24,6 +26,7 @@ class QuestionList(MethodView):
             for question in questions
         ]), 200
 
+    @question_blp.route('/edit')
     def post(self):
         # 질문 생성
         data = request.json
@@ -43,8 +46,8 @@ class QuestionList(MethodView):
         return jsonify({'msg': 'Successfully created question'}), 201
 
 
-@question_blp.route('/<int:question_id>')
 class QuestionResource(MethodView):
+    @question_blp.route('/<int:question_id>')
     def get(self, question_id):
         # 특정 질문 조회
         question = Question.query.get_or_404(question_id)
@@ -55,7 +58,8 @@ class QuestionResource(MethodView):
             'image_id': question.image_id,
             'image': question.image.to_dict() if question.image else None,
         }), 200
-
+        
+    @question_blp.route('/edit/<int:question_id>', methods=["PUT"])
     def put(self, question_id):
         # 특정 질문 수정
         question = Question.query.get_or_404(question_id)
@@ -69,7 +73,8 @@ class QuestionResource(MethodView):
 
         db.session.commit()
         return jsonify({'msg': 'Successfully updated question'}), 200
-
+    
+    @question_blp.route('/edit/<int:question_id>', methods=["DELETE"])
     def delete(self, question_id):
         # 특정 질문 삭제
         question = Question.query.get_or_404(question_id)
