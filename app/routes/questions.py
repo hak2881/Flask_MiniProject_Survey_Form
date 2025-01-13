@@ -4,17 +4,17 @@ from flask.views import MethodView
 from ..models import Question, db
 
 
-question_blp = Blueprint(
-    'Questions', 'questions', description="Operations on Questions", url_prefix='/questions')
+question_blp = Blueprint('Questions', 'questions', description="Operations on Questions", url_prefix='/questions')
 
+@question_blp.route('/')
 class QuestionList(MethodView):
-    @question_blp.route('/',methods=["GET", "POST"])
     def get(self):
         # 모든 질문 조회
         questions = Question.query.all()
-        return jsonify([question.to_dict for question in questions]), 200
+        return jsonify([question.to_dict() for question in questions]), 200
 
-    @question_blp.route('/edit',methods=["GET", "POST"])
+@question_blp.route('/edit')
+class QuestionCreate(MethodView):
     def post(self):
         # 질문 생성
         data = request.json
@@ -26,22 +26,24 @@ class QuestionList(MethodView):
             title=data['title'],
             is_active=data['is_active'],
             sqe=data['sqe'],
-            image_id=data.get('image_id') 
+            image_id=data['image_id']
         )
         db.session.add(new_question)
         db.session.commit()
 
         return jsonify({'msg': 'Successfully created question'}), 201
 
-
+@question_blp.route('/<int:question_id>')
 class QuestionResource(MethodView):
-    @question_blp.route('/<int:question_id>')
+
     def get(self, question_id):
         # 특정 질문 조회
         question = Question.query.get_or_404(question_id)
         return jsonify(question.to_dict()), 200
         
-    @question_blp.route('/edit/<int:question_id>', methods=["PUT"])
+        
+@question_blp.route('/edit/<int:question_id>')
+class QuestionModify(MethodView):
     def put(self, question_id):
         # 특정 질문 수정
         question = Question.query.get_or_404(question_id)
@@ -56,7 +58,7 @@ class QuestionResource(MethodView):
         db.session.commit()
         return jsonify({'msg': 'Successfully updated question'}), 200
     
-    @question_blp.route('/edit/<int:question_id>', methods=["DELETE"])
+
     def delete(self, question_id):
         # 특정 질문 삭제
         question = Question.query.get_or_404(question_id)

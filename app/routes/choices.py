@@ -7,20 +7,22 @@ from ..models import Choices, db
 choices_blp = Blueprint('Choices', 'choices', description="Operations on Choices", url_prefix='/choices')
 
 # Choices 목록 조회
-
+@choices_blp.route('/')
 class ChoicesList(MethodView):
-    @choices_blp.route('/',methods=["GET", "POST"])
+
     def get(self):
         choices = Choices.query.all()
         return jsonify([choice.to_dict() for choice in choices])
 
-    @choices_blp.route('/edit',methods=["GET", "POST"])
+@choices_blp.route('/edit')
+class ChoicesCreate(MethodView):
     def post(self):
         data = request.json
         new_choice = Choices(
             content=data['content'],
             is_active=data['is_active'],
-            sqe=data['sqe']
+            sqe=data['sqe'],
+            question_id=data['question_id']
         )
         db.session.add(new_choice)
         db.session.commit()
@@ -28,15 +30,16 @@ class ChoicesList(MethodView):
         return jsonify({"msg": "Successfully created choice"}), 201
 
 # 특정 Choice 조회, 수정, 삭제
-
+@choices_blp.route('/<int:choice_id>')
 class ChoiceResource(MethodView):
-    @choices_blp.route('/<int:choice_id>',methods=["GET"])
+
     def get(self, choice_id):
         # 특정 Choice 조회
         choice = Choices.query.get_or_404(choice_id)
         return jsonify(choice.to_dict())
     
-    @choices_blp.route('/edit/<int:choice_id>', methods =["PUT"])
+@choices_blp.route('/edit/<int:choice_id>')
+class ChoiceModify(MethodView):
     def put(self, choice_id):
         # 특정 Choice 수정
         choice = Choices.query.get_or_404(choice_id)
@@ -49,7 +52,7 @@ class ChoiceResource(MethodView):
         db.session.commit()
         return jsonify({'msg': 'Successfully updated choice'}), 200
 
-    @choices_blp.route('/edit/<int:choice_id>',methods =["DELETE"])
+
     def delete(self, choice_id):
         # 특정 Choice 삭제
         choice = Choices.query.get_or_404(choice_id)
