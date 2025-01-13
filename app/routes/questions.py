@@ -13,7 +13,7 @@ class QuestionList(MethodView):
         questions = Question.query.all()
         return jsonify([question.to_dict() for question in questions]), 200
 
-@question_blp.route('/edit')
+@question_blp.route('/admin')
 class QuestionCreate(MethodView):
     def post(self):
         # 질문 생성
@@ -42,7 +42,7 @@ class QuestionResource(MethodView):
         return jsonify(question.to_dict()), 200
         
         
-@question_blp.route('/edit/<int:question_id>')
+@question_blp.route('/admin/<int:question_id>')
 class QuestionModify(MethodView):
     def put(self, question_id):
         # 특정 질문 수정

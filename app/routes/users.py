@@ -12,7 +12,7 @@ class UserList(MethodView):
         users = User.query.all()
         return jsonify([user.to_dict() for user in users])
 
-@user_blp.route('/edit')
+@user_blp.route('/admin')
 class UserCreate(MethodView):
     def post(self):
         user_data = request.json
@@ -33,7 +33,7 @@ class UserResource(MethodView):
         user = User.query.get_or_404(user_id)
         return jsonify(user.to_dict()), 200
     
-@user_blp.route('/edit/<int:user_id>')
+@user_blp.route('/admin/<int:user_id>')
 class UserModify(MethodView):
     def put(self, user_id):
         user = User.query.get_or_404(user_id)

@@ -14,7 +14,7 @@ class ChoicesList(MethodView):
         choices = Choices.query.all()
         return jsonify([choice.to_dict() for choice in choices])
 
-@choices_blp.route('/edit')
+@choices_blp.route('/admin')
 class ChoicesCreate(MethodView):
     def post(self):
         data = request.json
@@ -38,7 +38,7 @@ class ChoiceResource(MethodView):
         choice = Choices.query.get_or_404(choice_id)
         return jsonify(choice.to_dict())
     
-@choices_blp.route('/edit/<int:choice_id>')
+@choices_blp.route('/admin/<int:choice_id>')
 class ChoiceModify(MethodView):
     def put(self, choice_id):
         # 특정 Choice 수정

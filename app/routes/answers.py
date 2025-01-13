@@ -11,7 +11,7 @@ class AnswerList(MethodView):
         answers = Answer.query.all()  
         return jsonify([answer.to_dict() for answer in answers]), 201
 # 답변 정보 생성
-@answer_blp.route('/edit')
+@answer_blp.route('/admin')
 class AnswerCreate(MethodView):
     def post(self):
         data = request.json
@@ -30,7 +30,7 @@ class AnswerGet(MethodView):
         return [answer.to_dict() for answer in answers]
     
 # 특정 답변 수정
-@answer_blp.route('/edit/<int:user_id>/<int:choice_id>')
+@answer_blp.route('/admin/<int:user_id>/<int:choice_id>')
 class PostAnswer(MethodView):
     def put(self, user_id, choice_id):
         # choice_id에 맞는 Answer 객체를 찾기

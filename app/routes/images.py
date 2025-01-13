@@ -12,7 +12,7 @@ class ImageList(MethodView):
         imgs = Image.query.all()
         return jsonify([img.to_dict() for img in imgs]), 200
 # 이미지 생성
-@image_blp.route('/edit')
+@image_blp.route('/admin')
 class ImageCreate(MethodView):
     def post(self):
         data = request.json
@@ -29,7 +29,7 @@ class ImageCreate(MethodView):
         return jsonify({"msg": "Successfully created Img"}), 201
 
 
-@image_blp.route('/edit/<int:image_id>')
+@image_blp.route('/admin/<int:image_id>')
 class ImageModify(MethodView):
 
     def put(self, image_id):
