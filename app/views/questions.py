@@ -7,25 +7,14 @@ from ..models import Question, db
 question_blp = Blueprint(
     'Questions', 'questions', description="Operations on Questions", url_prefix='/questions')
 
-
-
 class QuestionList(MethodView):
-    @question_blp.route('/')
+    @question_blp.route('/',methods=["GET", "POST"])
     def get(self):
         # 모든 질문 조회
         questions = Question.query.all()
-        return jsonify([
-            {
-                'title': question.title,
-                'is_active': question.is_active,
-                'sqe': question.sqe,
-                'image_id': question.image_id,
-                'image': question.image.to_dict() if question.image else None,
-            }
-            for question in questions
-        ]), 200
+        return jsonify([question.to_dict for question in questions]), 200
 
-    @question_blp.route('/edit')
+    @question_blp.route('/edit',methods=["GET", "POST"])
     def post(self):
         # 질문 생성
         data = request.json
@@ -50,13 +39,7 @@ class QuestionResource(MethodView):
     def get(self, question_id):
         # 특정 질문 조회
         question = Question.query.get_or_404(question_id)
-        return jsonify({
-            'title': question.title,
-            'is_active': question.is_active,
-            'sqe': question.sqe,
-            'image_id': question.image_id,
-            'image': question.image.to_dict() if question.image else None,
-        }), 200
+        return jsonify(question.to_dict()), 200
         
     @question_blp.route('/edit/<int:question_id>', methods=["PUT"])
     def put(self, question_id):

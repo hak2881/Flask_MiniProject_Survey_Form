@@ -8,7 +8,7 @@ image_blp = Blueprint("image", "image", description="Operations On Image", url_p
 
 
 class ImageList(MethodView):
-    @image_blp.route('/')
+    @image_blp.route('/',methods=["GET", "POST"] )
     def get(self):
         imgs = Image.query.all()
         return jsonify([{
@@ -16,6 +16,7 @@ class ImageList(MethodView):
             "type": img.type,
         } for img in imgs]), 200
 
+    @image_blp.route('/edit',methods=["GET", "POST"])
     def post(self):
         data = request.json
         if not data or 'url' not in data or 'type' not in data:
@@ -31,9 +32,8 @@ class ImageList(MethodView):
         return jsonify({"msg": "Successfully created Img"}), 201
 
 
-@image_blp.route('/<int:image_id>')
 class ImageResource(MethodView):
-
+    @image_blp.route('/edit/<int:image_id>', methods =["PUT"])
     def put(self, image_id):
         # 특정 이미지 수정
         img = Image.query.get_or_404(image_id)
@@ -45,7 +45,7 @@ class ImageResource(MethodView):
         db.session.commit()
         return jsonify({"msg": "Successfully updated Img"}), 200
 
-
+    @image_blp.route('/edit/<int:image_id>', methods =["DELETE"])
     def delete(self, image_id):
         # 특정 이미지 삭제
         img = Image.query.get_or_404(image_id)
