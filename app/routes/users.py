@@ -7,10 +7,10 @@ user_blp = Blueprint("Users", "users", description="Operations on users", url_pr
 
 @user_blp.route('/')
 class UserList(MethodView):
-    
     def get(self):
         users = User.query.all()
         return jsonify([user.to_dict() for user in users])
+
 
 @user_blp.route('/admin')
 class UserCreate(MethodView):
@@ -20,7 +20,7 @@ class UserCreate(MethodView):
             name=user_data['name'],
             age=user_data['age'],
             gender=user_data['gender'],
-            email=user_data['email'],
+            email=user_data['email']
         )
         db.session.add(new_user)
         db.session.commit()
@@ -28,7 +28,6 @@ class UserCreate(MethodView):
 
 @user_blp.route('/<int:user_id>')
 class UserResource(MethodView):
-    
     def get(self, user_id):
         user = User.query.get_or_404(user_id)
         return jsonify(user.to_dict()), 200
