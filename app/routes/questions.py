@@ -4,14 +4,9 @@ from flask.views import MethodView
 from ..models import Question, db
 
 
-question_blp = Blueprint('Questions', 'questions', description="Operations on Questions", url_prefix='/questions')
+question_blp = Blueprint('Question', 'question', description="Operations on Question", url_prefix='/question')
+questions_blp = Blueprint('Questions', 'questions', description="Operations on Questions", url_prefix='/questions')
 
-@question_blp.route('/')
-class QuestionList(MethodView):
-    def get(self):
-        # 모든 질문 조회
-        questions = Question.query.all()
-        return jsonify([question.to_dict() for question in questions]), 200
 
 @question_blp.route('/')
 class QuestionCreate(MethodView):
@@ -32,10 +27,15 @@ class QuestionCreate(MethodView):
         db.session.commit()
 
         return jsonify({'msg': f'Title: {new_question.title} question Success Create'}), 201
+    
+    def get(self):
+        # 모든 질문 조회
+        questions = Question.query.all()
+        return jsonify([question.to_dict() for question in questions]), 200
+    
 
-@question_blp.route('/<int:question_id>')
+@questions_blp.route('/<int:question_id>')
 class QuestionResource(MethodView):
-
     def get(self, question_id):
         # 특정 질문 조회
         question = Question.query.get_or_404(question_id)
