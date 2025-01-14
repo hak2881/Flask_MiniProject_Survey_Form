@@ -12,7 +12,7 @@ class ImageList(MethodView):
         imgs = Image.query.all()
         return jsonify([img.to_dict() for img in imgs]), 200
 # 이미지 생성
-@image_blp.route('/admin')
+@image_blp.route('/')
 class ImageCreate(MethodView):
     def post(self):
         data = request.json
@@ -26,7 +26,7 @@ class ImageCreate(MethodView):
         db.session.add(new_img)
         db.session.commit()
 
-        return jsonify({"msg": "Successfully created Img"}), 201
+        return jsonify({"msg": f"ID: {new_img.id} Image Success Create"}), 201
 
 
 @image_blp.route('/admin/<int:image_id>')
@@ -50,3 +50,13 @@ class ImageModify(MethodView):
         db.session.delete(img)
         db.session.commit()
         return jsonify({"msg": "Successfully deleted Img"}), 200
+
+@image_blp.route("/main")
+class ImageMain(MethodView):
+    def get(self):
+        main_img = Image.query.filter_by(is_main=True).first()
+        
+        if main_img is None:
+            return jsonify({"msg":"No main image found"}), 404
+        
+        return jsonify({"image":main_img.url}), 200

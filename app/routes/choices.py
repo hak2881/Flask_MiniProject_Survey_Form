@@ -4,7 +4,7 @@ from flask.views import MethodView
 from ..models import Choices, db
 
 
-choices_blp = Blueprint('Choices', 'choices', description="Operations on Choices", url_prefix='/choices')
+choices_blp = Blueprint('Choices', 'choices', description="Operations on Choices", url_prefix='/choice')
 
 # Choices 목록 조회
 @choices_blp.route('/')
@@ -14,7 +14,7 @@ class ChoicesList(MethodView):
         choices = Choices.query.all()
         return jsonify([choice.to_dict() for choice in choices])
 
-@choices_blp.route('/admin')
+@choices_blp.route('/')
 class ChoicesCreate(MethodView):
     def post(self):
         data = request.json
@@ -27,16 +27,16 @@ class ChoicesCreate(MethodView):
         db.session.add(new_choice)
         db.session.commit()
         
-        return jsonify({"msg": "Successfully created choice"}), 201
+        return jsonify({"msg": f"Content: {new_choice.content} choice Success Create"}), 201
 
 # 특정 Choice 조회, 수정, 삭제
-@choices_blp.route('/<int:choice_id>')
+@choices_blp.route('/<int:question_id>')
 class ChoiceResource(MethodView):
 
-    def get(self, choice_id):
+    def get(self, question_id):
         # 특정 Choice 조회
-        choice = Choices.query.get_or_404(choice_id)
-        return jsonify(choice.to_dict())
+        choices = Choices.query.get_or_404(question_id)
+        return jsonify([choice.to_dict() for choice in choices])
     
 @choices_blp.route('/admin/<int:choice_id>')
 class ChoiceModify(MethodView):

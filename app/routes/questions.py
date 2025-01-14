@@ -13,7 +13,7 @@ class QuestionList(MethodView):
         questions = Question.query.all()
         return jsonify([question.to_dict() for question in questions]), 200
 
-@question_blp.route('/admin')
+@question_blp.route('/')
 class QuestionCreate(MethodView):
     def post(self):
         # 질문 생성
@@ -31,7 +31,7 @@ class QuestionCreate(MethodView):
         db.session.add(new_question)
         db.session.commit()
 
-        return jsonify({'msg': 'Successfully created question'}), 201
+        return jsonify({'msg': f'Title: {new_question.title} question Success Create'}), 201
 
 @question_blp.route('/<int:question_id>')
 class QuestionResource(MethodView):
@@ -40,7 +40,12 @@ class QuestionResource(MethodView):
         # 특정 질문 조회
         question = Question.query.get_or_404(question_id)
         return jsonify(question.to_dict()), 200
-        
+    
+@question_blp.route('/count')
+class QuestionCount(MethodView):
+    def get(self):
+        questions = Question.query.all()
+        return jsonify({"total": len(questions)}) 
         
 @question_blp.route('/admin/<int:question_id>')
 class QuestionModify(MethodView):

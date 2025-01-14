@@ -3,7 +3,7 @@ from flask.views import MethodView
 from flask_smorest import Blueprint
 from ..models import Answer, db
 
-answer_blp = Blueprint('Answer', 'answer', url_prefix='/answer')
+answer_blp = Blueprint('Answer', 'answer', url_prefix='/submit')
 # 모든 답변 조회
 @answer_blp.route('/')
 class AnswerList(MethodView):
@@ -18,7 +18,7 @@ class AnswerCreate(MethodView):
         new_answer = Answer(choice_id=data["choice_id"], user_id=data["user_id"])
         db.session.add(new_answer)
         db.session.commit()
-        return jsonify({"msg": "Created Answer"}), 201
+        return jsonify({[answer for answer in new_answer]}), 201
 
 # 답변 조회    
 @answer_blp.route('/<int:user_id>/<int:choice_id>')

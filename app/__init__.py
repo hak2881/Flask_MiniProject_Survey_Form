@@ -1,5 +1,5 @@
 from config import db
-from flask import Flask
+from flask import Flask, jsonify
 from flask_migrate import Migrate
 from flask_smorest import Api
 
@@ -25,7 +25,6 @@ def create_app():
     
     api = Api(application)
 
-
     
     # 블루 프린트 등록
     from .routes.questions import question_blp
@@ -39,6 +38,10 @@ def create_app():
     api.register_blueprint(choices_blp)
     api.register_blueprint(user_blp)
     api.register_blueprint(answer_blp)
+    
+    @application.route('/')
+    def home():
+        return jsonify({"msg":"Success Connect"}), 200
     
     if __name__ == "__main__":
         application.run(debug=True) 

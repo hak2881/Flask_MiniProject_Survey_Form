@@ -3,7 +3,7 @@ from flask.views import MethodView
 from flask_smorest import Blueprint
 from ..models import User , db
 
-user_blp = Blueprint("Users", "users", description="Operations on users", url_prefix="/users")
+user_blp = Blueprint("Users", "users", description="Operations on users", url_prefix="/signup")
 
 @user_blp.route('/')
 class UserList(MethodView):
@@ -12,7 +12,7 @@ class UserList(MethodView):
         return jsonify([user.to_dict() for user in users])
 
 
-@user_blp.route('/admin')
+@user_blp.route('/')
 class UserCreate(MethodView):
     def post(self):
         user_data = request.json
@@ -22,9 +22,13 @@ class UserCreate(MethodView):
             gender=user_data['gender'],
             email=user_data['email']
         )
+        existing_user = User.query.filter_by(name=new_user.name).first()
+        if existing_user:
+            return jsonify({"message": "이미 존재하는 계정 입니다."}), 400
         db.session.add(new_user)
         db.session.commit()
-        return jsonify({"msg": "User created successfully"}), 201
+        return jsonify({"msg": "User님 회원가입을 축하합니다", 
+                        "user_id": new_user.id}), 201
 
 @user_blp.route('/<int:user_id>')
 class UserResource(MethodView):
