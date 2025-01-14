@@ -1,7 +1,6 @@
 from datetime import datetime
 from enum import Enum
 from zoneinfo import ZoneInfo
-
 from config import db
 
 KST = ZoneInfo("Asia/Seoul")
@@ -41,6 +40,7 @@ class User(BaseModel):
     age = db.Column(db.Enum(AgeStatus), nullable=False)
     gender = db.Column(db.Enum(GenderStatus), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
+
 
     def to_dict(self):
         return {
@@ -128,3 +128,4 @@ class Answer(BaseModel):
             "created_at": self.created_at.isoformat(),
             "updated_at": self.updated_at.isoformat(),
         }
+        
