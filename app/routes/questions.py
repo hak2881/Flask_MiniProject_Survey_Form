@@ -34,7 +34,7 @@ class QuestionCreate(MethodView):
         return jsonify([question.to_dict() for question in questions]), 200
     
 
-@question_blp.route('/<int:question_id>')
+@questions_blp.route('/<int:question_id>')
 class QuestionResource(MethodView):
     def get(self, question_id):
         # 특정 질문 조회
@@ -43,6 +43,18 @@ class QuestionResource(MethodView):
         "id": question.id,
         "title": question.title,
         "image": {"url":question.image.url if question.image else None},
+<<<<<<< HEAD
+=======
+        "choices": [
+            {
+                "id": choice.id,
+                "content": choice.content,
+                "is_active": choice.is_active,
+                "sqe": choice.sqe
+            }
+            for choice in Choices.query.filter_by(question_id=question.id).all()
+        ]
+>>>>>>> 6fe3647445a980bf9c94ef49232878850e50ce94
     }})
     
 @questions_blp.route('/count')

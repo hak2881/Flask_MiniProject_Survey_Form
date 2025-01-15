@@ -33,7 +33,11 @@ class ChoiceResource(MethodView):
 
     def get(self, question_id):
         # 특정 Choice 조회
+<<<<<<< HEAD
         choices = Choices.query.filter_by(question_id=question_id).all()
+=======
+        choices = Choices.query.get_or_404(question_id)
+>>>>>>> 6fe3647445a980bf9c94ef49232878850e50ce94
         return {"choices":[{"id":choice.id,"content":choice.content,"is_active":choice.is_active,"sqe":choice.sqe}for choice in choices]}
     
 @choices_blp.route('/admin/<int:choice_id>')
