@@ -1,7 +1,7 @@
 from flask_smorest import Blueprint
 from flask import request, jsonify
 from flask.views import MethodView
-from ..models import Question, db
+from ..models import Question, db, Choices
 
 
 question_blp = Blueprint('Question', 'question', description="Operations on Question", url_prefix='/question')
@@ -27,14 +27,14 @@ class QuestionCreate(MethodView):
         db.session.commit()
 
         return jsonify({'msg': f'Title: {new_question.title} question Success Create'}), 201
-    
+
     def get(self):
         # 모든 질문 조회
         questions = Question.query.all()
         return jsonify([question.to_dict() for question in questions]), 200
-    
 
-@questions_blp.route('/<int:question_id>')
+
+@question_blp.route('/<int:question_id>')
 class QuestionResource(MethodView):
     def get(self, question_id):
         # 특정 질문 조회
@@ -43,8 +43,6 @@ class QuestionResource(MethodView):
         "id": question.id,
         "title": question.title,
         "image": {"url":question.image.url if question.image else None},
-<<<<<<< HEAD
-=======
         "choices": [
             {
                 "id": choice.id,
@@ -53,16 +51,14 @@ class QuestionResource(MethodView):
                 "sqe": choice.sqe
             }
             for choice in Choices.query.filter_by(question_id=question.id).all()
-        ]
->>>>>>> 6fe3647445a980bf9c94ef49232878850e50ce94
-    }})
-    
+        ]    }})
+
 @questions_blp.route('/count')
 class QuestionCount(MethodView):
     def get(self):
         questions = Question.query.all()
-        return jsonify({"total": len(questions)}) 
-        
+        return jsonify({"total": len(questions)})
+
 @question_blp.route('/admin/<int:question_id>')
 class QuestionModify(MethodView):
     def put(self, question_id):
@@ -78,7 +74,7 @@ class QuestionModify(MethodView):
 
         db.session.commit()
         return jsonify({'msg': 'Successfully updated question'}), 200
-    
+
 
     def delete(self, question_id):
         # 특정 질문 삭제

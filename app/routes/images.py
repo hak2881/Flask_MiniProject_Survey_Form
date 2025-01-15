@@ -52,8 +52,9 @@ class ImageModify(MethodView):
 class ImageMain(MethodView):
     def get(self):
         main_img = Image.query.filter_by(type="main").first()
-        
+
         if main_img is None:
             return jsonify({"msg":"No main image found"}), 404
-        
+
         return jsonify({"image":main_img.url}), 200
+

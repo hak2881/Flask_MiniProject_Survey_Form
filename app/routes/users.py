@@ -1,4 +1,4 @@
-from flask import request, jsonify
+ffrom flask import request, jsonify
 from flask.views import MethodView
 from flask_smorest import Blueprint
 from ..models import User , db
@@ -20,20 +20,20 @@ class UserCreate(MethodView):
             return jsonify({"message": "이미 존재하는 계정 입니다."}), 400
         db.session.add(new_user)
         db.session.commit()
-        return jsonify({"msg": "User님 회원가입을 축하합니다", 
+        return jsonify({"msg": "User님 회원가입을 축하합니다",
                         "user_id": new_user.id}), 201
 
     def get(self):
         users = User.query.all()
         return jsonify([user.to_dict() for user in users])
-	
+
 
 @user_blp.route('/<int:user_id>')
 class UserResource(MethodView):
     def get(self, user_id):
         user = User.query.get_or_404(user_id)
         return jsonify(user.to_dict()), 200
-    
+
 @user_blp.route('/admin/<int:user_id>')
 class UserModify(MethodView):
     def put(self, user_id):
@@ -48,9 +48,10 @@ class UserModify(MethodView):
         db.session.commit()
         return jsonify({"msg": "User updated successfully"}), 200
 
-    
+
     def delete(self, user_id):
         user = User.query.get_or_404(user_id)
         db.session.delete(user)
         db.session.commit()
         return jsonify({"msg": "User deleted successfully"}), 200
+
