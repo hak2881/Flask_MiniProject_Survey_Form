@@ -15,13 +15,13 @@ class UserCreate(MethodView):
             gender=user_data['gender'],
             email=user_data['email']
         )
-        existing_user = User.query.filter_by(name=new_user.name).first()
+        existing_user = User.query.filter_by(email=new_user.email).first()
         if existing_user:
             return jsonify({"message": "이미 존재하는 계정 입니다."}), 400
         db.session.add(new_user)
         db.session.commit()
-        return jsonify({"msg": "User님 회원가입을 축하합니다",
-                        "user_id": new_user.id}), 201
+        return jsonify({"message": "User님 회원가입을 축하합니다",
+                        "user_id": new_user.name}), 201
 
     def get(self):
         users = User.query.all()
