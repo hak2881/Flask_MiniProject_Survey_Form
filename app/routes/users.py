@@ -26,6 +26,7 @@ class UserCreate(MethodView):
     def get(self):
         users = User.query.all()
         return jsonify([user.to_dict() for user in users])
+	
 
 @user_blp.route('/<int:user_id>')
 class UserResource(MethodView):

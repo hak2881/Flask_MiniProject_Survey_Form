@@ -39,7 +39,20 @@ class QuestionResource(MethodView):
     def get(self, question_id):
         # 특정 질문 조회
         question = Question.query.get_or_404(question_id)
-        return jsonify(question.to_dict()), 200
+        return jsonify({"question":{
+        "id": question.id,
+        "title": question.title,
+        "image": {"url":question.image.url if question.image else None},
+        "choices": [
+            {
+                "id": choice.id,
+                "content": choice.content,
+                "is_active": choice.is_active,
+                "sqe": choice.sqe
+            }
+            for choice in Choices.query.filter_by(question_id=question.id).all()
+        ]
+    }})
     
 @question_blp.route('/count')
 class QuestionCount(MethodView):
