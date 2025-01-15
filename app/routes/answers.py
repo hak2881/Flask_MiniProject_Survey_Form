@@ -29,7 +29,7 @@ class AnswerCreate(MethodView):
         # 성공적으로 생성된 응답 반환
         return {
             "msg":"Successfully created answers.",
-            }, 201
+             }, 201
 
 
 # 답변 조회
@@ -40,7 +40,7 @@ class AnswerGet(MethodView):
         if not answers:
             return {"msg":"No Found Data"}
         return [answer.to_dict() for answer in answers]
-    
+
 # 특정 답변 수정
 @answer_blp.route('/admin/<int:user_id>/<int:choice_id>')
 class PostAnswer(MethodView):

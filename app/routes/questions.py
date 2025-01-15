@@ -33,7 +33,6 @@ class QuestionCreate(MethodView):
         questions = Question.query.all()
         return jsonify([question.to_dict() for question in questions]), 200
 
-
 @question_blp.route('/<int:question_id>')
 class QuestionResource(MethodView):
     def get(self, question_id):

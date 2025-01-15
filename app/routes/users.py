@@ -1,4 +1,4 @@
-ffrom flask import request, jsonify
+from flask import request, jsonify
 from flask.views import MethodView
 from flask_smorest import Blueprint
 from ..models import User , db
