@@ -52,7 +52,7 @@ class QuestionResource(MethodView):
             for choice in Choices.query.filter_by(question_id=question.id).all()
         ]    }})
 
-@questions_blp.route('/count')
+@question_blp.route('/count')
 class QuestionCount(MethodView):
     def get(self):
         questions = Question.query.all()
