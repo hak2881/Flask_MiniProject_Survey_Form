@@ -23,9 +23,9 @@ class ChoicesCreate(MethodView):
         
         return jsonify({"msg": f"Content: {new_choice.content} choice Success Create"}), 201
     
-        def get(self):
-            choices = Choices.query.all()
-            return jsonify([choice.to_dict() for choice in choices])
+    def get(self):
+        choices = Choices.query.all()
+        return jsonify([choice.to_dict() for choice in choices])
 
 # 특정 Choice 조회, 수정, 삭제
 @choices_blp.route('/<int:question_id>')
@@ -33,12 +33,10 @@ class ChoiceResource(MethodView):
 
     def get(self, question_id):
         # 특정 Choice 조회
-<<<<<<< HEAD
         choices = Choices.query.filter_by(question_id=question_id).all()
-=======
-        choices = Choices.query.get_or_404(question_id)
->>>>>>> 6fe3647445a980bf9c94ef49232878850e50ce94
-        return {"choices":[{"id":choice.id,"content":choice.content,"is_active":choice.is_active,"sqe":choice.sqe}for choice in choices]}
+        # choices = Choices.query.get_or_404(question_id)
+
+        return {"choices":[choice.to_dict() for choice in choices]}
     
 @choices_blp.route('/admin/<int:choice_id>')
 class ChoiceModify(MethodView):

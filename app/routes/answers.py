@@ -4,24 +4,32 @@ from flask_smorest import Blueprint
 from ..models import Answer, db
 
 answer_blp = Blueprint('Answer', 'answer', url_prefix='/submit')
-# 모든 답변 조회
-@answer_blp.route('/')
-class AnswerList(MethodView):
-    def get(self):
-        answers = Answer.query.all()  
-        return jsonify([answer.to_dict() for answer in answers]), 201
+
 # 답변 정보 생성
-@answer_blp.route('/admin')
+@answer_blp.route('/', methods=["POST"])
 class AnswerCreate(MethodView):
     def post(self):
         data = request.json
-        new_answer = Answer(choice_id=data["choice_id"], user_id=data["user_id"])
-        db.session.add(new_answer)
+        
+        for answer in data:
+            user_id = answer.get("userId")
+            choice_id=answer.get("choiceId")
+        # userId와 choiceId 유효성 검사
+            if not user_id or not choice_id:
+                return {"msg": "Invalid data: userId and choiceId are required"}, 400
+
+            # Answer 객체 생성 및 데이터베이스에 추가
+            new_answer = Answer(user_id=user_id, choice_id=choice_id)
+            db.session.add(new_answer)
+            
+
+        # 데이터베이스에 변경사항 커밋
         db.session.commit()
-        if user_id and choice_id:
-            return answers.post_answer(user_id=user_id, choice_id=choice_id)
-        else:
-            return {"msg": "Invalid data"}
+
+        # 성공적으로 생성된 응답 반환
+        return {
+            "msg":"Successfully created answers.",
+             }, 201
 
 
 # 답변 조회    
