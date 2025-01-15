@@ -5,12 +5,6 @@ from ..models import Image, db
 
 image_blp = Blueprint("image", "image", description="Operations On Image", url_prefix="/image")
 
-# 전체 이미지 조회
-@image_blp.route('/')
-class ImageList(MethodView):
-    def get(self):
-        imgs = Image.query.all()
-        return jsonify([img.to_dict() for img in imgs]), 200
 # 이미지 생성
 @image_blp.route('/')
 class ImageCreate(MethodView):
@@ -27,6 +21,9 @@ class ImageCreate(MethodView):
         db.session.commit()
 
         return jsonify({"msg": f"ID: {new_img.id} Image Success Create"}), 201
+    def get(self):
+        imgs = Image.query.all()
+        return jsonify([img.to_dict() for img in imgs]), 200
 
 
 @image_blp.route('/admin/<int:image_id>')
@@ -54,7 +51,7 @@ class ImageModify(MethodView):
 @image_blp.route("/main")
 class ImageMain(MethodView):
     def get(self):
-        main_img = Image.query.filter_by(is_main=True).first()
+        main_img = Image.query.filter_by(type="main").first()
         
         if main_img is None:
             return jsonify({"msg":"No main image found"}), 404

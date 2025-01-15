@@ -18,7 +18,11 @@ class AnswerCreate(MethodView):
         new_answer = Answer(choice_id=data["choice_id"], user_id=data["user_id"])
         db.session.add(new_answer)
         db.session.commit()
-        return jsonify({[answer for answer in new_answer]}), 201
+        if user_id and choice_id:
+            return answers.post_answer(user_id=user_id, choice_id=choice_id)
+        else:
+            return {"msg": "Invalid data"}
+
 
 # 답변 조회    
 @answer_blp.route('/<int:user_id>/<int:choice_id>')

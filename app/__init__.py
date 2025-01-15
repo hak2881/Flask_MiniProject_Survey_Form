@@ -27,7 +27,7 @@ def create_app():
 
     
     # 블루 프린트 등록
-    from .routes.questions import question_blp
+    from .routes.questions import question_blp,questions_blp
     from .routes.images import image_blp
     from .routes.choices import choices_blp
     from .routes.users import user_blp
@@ -38,6 +38,7 @@ def create_app():
     api.register_blueprint(choices_blp)
     api.register_blueprint(user_blp)
     api.register_blueprint(answer_blp)
+    api.register_blueprint(questions_blp)
     
     @application.route('/')
     def home():

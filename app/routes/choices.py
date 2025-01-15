@@ -7,12 +7,6 @@ from ..models import Choices, db
 choices_blp = Blueprint('Choices', 'choices', description="Operations on Choices", url_prefix='/choice')
 
 # Choices 목록 조회
-@choices_blp.route('/')
-class ChoicesList(MethodView):
-
-    def get(self):
-        choices = Choices.query.all()
-        return jsonify([choice.to_dict() for choice in choices])
 
 @choices_blp.route('/')
 class ChoicesCreate(MethodView):
@@ -28,6 +22,10 @@ class ChoicesCreate(MethodView):
         db.session.commit()
         
         return jsonify({"msg": f"Content: {new_choice.content} choice Success Create"}), 201
+    
+        def get(self):
+            choices = Choices.query.all()
+            return jsonify([choice.to_dict() for choice in choices])
 
 # 특정 Choice 조회, 수정, 삭제
 @choices_blp.route('/<int:question_id>')
@@ -35,8 +33,8 @@ class ChoiceResource(MethodView):
 
     def get(self, question_id):
         # 특정 Choice 조회
-        choices = Choices.query.get_or_404(question_id)
-        return jsonify([choice.to_dict() for choice in choices])
+        choices = Choices.query.filter_by(question_id=question_id).all()
+        return {"choices":[{"id":choice.id,"content":choice.content,"is_active":choice.is_active,"sqe":choice.sqe}for choice in choices]}
     
 @choices_blp.route('/admin/<int:choice_id>')
 class ChoiceModify(MethodView):

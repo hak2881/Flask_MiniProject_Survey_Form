@@ -6,13 +6,6 @@ from ..models import User , db
 user_blp = Blueprint("Users", "users", description="Operations on users", url_prefix="/signup")
 
 @user_blp.route('/')
-class UserList(MethodView):
-    def get(self):
-        users = User.query.all()
-        return jsonify([user.to_dict() for user in users])
-
-
-@user_blp.route('/')
 class UserCreate(MethodView):
     def post(self):
         user_data = request.json
@@ -29,6 +22,11 @@ class UserCreate(MethodView):
         db.session.commit()
         return jsonify({"msg": "User님 회원가입을 축하합니다", 
                         "user_id": new_user.id}), 201
+
+    def get(self):
+        users = User.query.all()
+        return jsonify([user.to_dict() for user in users])
+	
 
 @user_blp.route('/<int:user_id>')
 class UserResource(MethodView):

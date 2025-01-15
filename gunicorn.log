@@ -1,0 +1,810 @@
+
+[2025-01-15 00:23:55 +0000] [21813] [INFO] Starting gunicorn 23.0.0
+[2025-01-15 00:23:55 +0000] [21813] [INFO] Listening at: http://127.0.0.1:8000 (21813)
+[2025-01-15 00:23:55 +0000] [21813] [INFO] Using worker: sync
+[2025-01-15 00:23:55 +0000] [21815] [INFO] Booting worker with pid: 21815
+[2025-01-15 00:23:55 +0000] [21818] [INFO] Booting worker with pid: 21818
+[2025-01-15 00:23:55 +0000] [21819] [INFO] Booting worker with pid: 21819
+[2025-01-15 00:23:55 +0000] [21820] [INFO] Booting worker with pid: 21820
+[2025-01-15 00:23:57 +0000] [21815] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/ec2-user/flask_miniproject1/wsgi.py", line 3, in <module>
+    app = create_app()
+          ^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/__init__.py", line 32, in create_app
+    from .routes.choices import choices_blp
+  File "/home/ec2-user/flask_miniproject1/app/routes/choices.py", line 27
+    choices = Choices.query.all()
+    ^^^^^^^
+IndentationError: expected an indented block after function definition on line 26
+[2025-01-15 00:23:57 +0000] [21815] [INFO] Worker exiting (pid: 21815)
+[2025-01-15 00:23:57 +0000] [21818] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/ec2-user/flask_miniproject1/wsgi.py", line 3, in <module>
+    app = create_app()
+          ^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/__init__.py", line 32, in create_app
+    from .routes.choices import choices_blp
+  File "/home/ec2-user/flask_miniproject1/app/routes/choices.py", line 27
+    choices = Choices.query.all()
+    ^^^^^^^
+IndentationError: expected an indented block after function definition on line 26
+[2025-01-15 00:23:57 +0000] [21818] [INFO] Worker exiting (pid: 21818)
+[2025-01-15 00:23:57 +0000] [21819] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/ec2-user/flask_miniproject1/wsgi.py", line 3, in <module>
+    app = create_app()
+          ^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/__init__.py", line 32, in create_app
+    from .routes.choices import choices_blp
+  File "/home/ec2-user/flask_miniproject1/app/routes/choices.py", line 27
+    choices = Choices.query.all()
+    ^^^^^^^
+IndentationError: expected an indented block after function definition on line 26
+[2025-01-15 00:23:57 +0000] [21819] [INFO] Worker exiting (pid: 21819)
+[2025-01-15 00:23:57 +0000] [21820] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/ec2-user/flask_miniproject1/wsgi.py", line 3, in <module>
+    app = create_app()
+          ^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/__init__.py", line 32, in create_app
+    from .routes.choices import choices_blp
+  File "/home/ec2-user/flask_miniproject1/app/routes/choices.py", line 27
+    choices = Choices.query.all()
+    ^^^^^^^
+IndentationError: expected an indented block after function definition on line 26
+[2025-01-15 00:23:57 +0000] [21820] [INFO] Worker exiting (pid: 21820)
+[2025-01-15 00:23:57 +0000] [21813] [ERROR] Worker (pid:21815) exited with code 3
+[2025-01-15 00:23:57 +0000] [21813] [ERROR] Worker (pid:21818) was sent SIGTERM!
+[2025-01-15 00:23:57 +0000] [21813] [ERROR] Worker (pid:21820) was sent SIGTERM!
+[2025-01-15 00:23:57 +0000] [21813] [ERROR] Worker (pid:21819) was sent SIGTERM!
+[2025-01-15 00:23:57 +0000] [21813] [ERROR] Shutting down: Master
+[2025-01-15 00:23:57 +0000] [21813] [ERROR] Reason: Worker failed to boot.
+[2025-01-15 00:29:28 +0000] [22637] [INFO] Starting gunicorn 23.0.0
+[2025-01-15 00:29:28 +0000] [22637] [INFO] Listening at: http://127.0.0.1:8000 (22637)
+[2025-01-15 00:29:28 +0000] [22637] [INFO] Using worker: sync
+[2025-01-15 00:29:28 +0000] [22639] [INFO] Booting worker with pid: 22639
+[2025-01-15 00:29:28 +0000] [22640] [INFO] Booting worker with pid: 22640
+[2025-01-15 00:29:28 +0000] [22642] [INFO] Booting worker with pid: 22642
+[2025-01-15 00:29:28 +0000] [22645] [INFO] Booting worker with pid: 22645
+[2025-01-15 00:30:55 +0000] [22637] [CRITICAL] WORKER TIMEOUT (pid:22642)
+[2025-01-15 00:31:00 +0000] [22637] [ERROR] Worker (pid:22642) was sent SIGKILL! Perhaps out of memory?
+[2025-01-15 00:31:00 +0000] [22656] [INFO] Booting worker with pid: 22656
+[2025-01-15 00:35:34 +0000] [22637] [INFO] Handling signal: term
+[2025-01-15 00:35:38 +0000] [22639] [INFO] Worker exiting (pid: 22639)
+[2025-01-15 00:35:38 +0000] [22645] [INFO] Worker exiting (pid: 22645)
+[2025-01-15 00:35:38 +0000] [22640] [INFO] Worker exiting (pid: 22640)
+[2025-01-15 00:36:08 +0000] [22637] [ERROR] Worker (pid:22639) was sent SIGKILL! Perhaps out of memory?
+[2025-01-15 00:36:08 +0000] [22637] [INFO] Shutting down: Master
+[2025-01-15 00:36:08 +0000] [22637] [ERROR] Worker (pid:22640) was sent SIGKILL! Perhaps out of memory?
+[2025-01-15 00:36:08 +0000] [22637] [ERROR] Worker (pid:22645) was sent SIGKILL! Perhaps out of memory?
+[2025-01-15 00:36:08 +0000] [22637] [ERROR] Worker (pid:22656) was sent SIGKILL! Perhaps out of memory?
+[2025-01-15 01:16:14 +0000] [26569] [INFO] Starting gunicorn 23.0.0
+[2025-01-15 01:16:14 +0000] [26569] [INFO] Listening at: http://127.0.0.1:8000 (26569)
+[2025-01-15 01:16:14 +0000] [26569] [INFO] Using worker: sync
+[2025-01-15 01:16:14 +0000] [26571] [INFO] Booting worker with pid: 26571
+[2025-01-15 01:16:14 +0000] [26572] [INFO] Booting worker with pid: 26572
+[2025-01-15 01:16:15 +0000] [26575] [INFO] Booting worker with pid: 26575
+[2025-01-15 01:16:15 +0000] [26576] [INFO] Booting worker with pid: 26576
+[2025-01-15 02:40:24 +0000] [3188] [INFO] Starting gunicorn 23.0.0
+[2025-01-15 02:40:24 +0000] [3188] [INFO] Listening at: http://127.0.0.1:8000 (3188)
+[2025-01-15 02:40:24 +0000] [3188] [INFO] Using worker: sync
+[2025-01-15 02:40:24 +0000] [3190] [INFO] Booting worker with pid: 3190
+[2025-01-15 02:40:24 +0000] [3193] [INFO] Booting worker with pid: 3193
+[2025-01-15 02:40:25 +0000] [3210] [INFO] Booting worker with pid: 3210
+[2025-01-15 02:40:25 +0000] [3213] [INFO] Booting worker with pid: 3213
+[2025-01-15 02:40:26 +0000] [3193] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/ec2-user/flask_miniproject1/wsgi.py", line 3, in <module>
+    app = create_app()
+          ^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/__init__.py", line 34, in create_app
+    from .routes.answers import answer_blp
+  File "/home/ec2-user/flask_miniproject1/app/routes/answers.py", line 21
+    if user_id and choice_id:
+IndentationError: unexpected indent
+[2025-01-15 02:40:26 +0000] [3193] [INFO] Worker exiting (pid: 3193)
+[2025-01-15 02:40:26 +0000] [3210] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/ec2-user/flask_miniproject1/wsgi.py", line 3, in <module>
+    app = create_app()
+          ^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/__init__.py", line 34, in create_app
+    from .routes.answers import answer_blp
+  File "/home/ec2-user/flask_miniproject1/app/routes/answers.py", line 21
+    if user_id and choice_id:
+IndentationError: unexpected indent
+[2025-01-15 02:40:26 +0000] [3210] [INFO] Worker exiting (pid: 3210)
+[2025-01-15 02:40:26 +0000] [3190] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/ec2-user/flask_miniproject1/wsgi.py", line 3, in <module>
+    app = create_app()
+          ^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/__init__.py", line 34, in create_app
+    from .routes.answers import answer_blp
+  File "/home/ec2-user/flask_miniproject1/app/routes/answers.py", line 21
+    if user_id and choice_id:
+IndentationError: unexpected indent
+[2025-01-15 02:40:26 +0000] [3190] [INFO] Worker exiting (pid: 3190)
+[2025-01-15 02:40:26 +0000] [3213] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/ec2-user/flask_miniproject1/wsgi.py", line 3, in <module>
+    app = create_app()
+          ^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/__init__.py", line 34, in create_app
+    from .routes.answers import answer_blp
+  File "/home/ec2-user/flask_miniproject1/app/routes/answers.py", line 21
+    if user_id and choice_id:
+IndentationError: unexpected indent
+[2025-01-15 02:40:26 +0000] [3213] [INFO] Worker exiting (pid: 3213)
+[2025-01-15 02:40:27 +0000] [3188] [ERROR] Worker (pid:3213) exited with code 3
+[2025-01-15 02:40:27 +0000] [3188] [ERROR] Worker (pid:3210) was sent SIGTERM!
+[2025-01-15 02:40:27 +0000] [3188] [ERROR] Worker (pid:3190) exited with code 3
+[2025-01-15 02:40:27 +0000] [3188] [ERROR] Worker (pid:3193) exited with code 3
+[2025-01-15 02:42:38 +0000] [4264] [INFO] Starting gunicorn 23.0.0
+[2025-01-15 02:42:38 +0000] [4264] [INFO] Listening at: http://127.0.0.1:8000 (4264)
+[2025-01-15 02:42:38 +0000] [4264] [INFO] Using worker: sync
+[2025-01-15 02:42:38 +0000] [4266] [INFO] Booting worker with pid: 4266
+[2025-01-15 02:42:38 +0000] [4269] [INFO] Booting worker with pid: 4269
+[2025-01-15 02:42:38 +0000] [4270] [INFO] Booting worker with pid: 4270
+[2025-01-15 02:42:39 +0000] [4271] [INFO] Booting worker with pid: 4271
+[2025-01-15 02:54:35,167] ERROR in app: Exception on /choice/1 [GET]
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/routes/choices.py", line 37, in get
+    return {"choices":[{"id":choice.id,"content":choice.content,"is_active":choice.is_active,"sqe":choice.sqe}for choice in choices]}
+                                                                                                                            ^^^^^^^
+TypeError: 'Choices' object is not iterable
+[2025-01-15 02:54:59 +0000] [4264] [INFO] Handling signal: term
+[2025-01-15 02:54:59 +0000] [4269] [INFO] Worker exiting (pid: 4269)
+[2025-01-15 02:54:59 +0000] [4270] [INFO] Worker exiting (pid: 4270)
+[2025-01-15 02:54:59 +0000] [4271] [INFO] Worker exiting (pid: 4271)
+[2025-01-15 02:54:59 +0000] [4266] [INFO] Worker exiting (pid: 4266)
+[2025-01-15 02:54:59 +0000] [4264] [ERROR] Worker (pid:4266) was sent SIGTERM!
+[2025-01-15 02:54:59 +0000] [4264] [ERROR] Worker (pid:4269) was sent SIGTERM!
+[2025-01-15 02:54:59 +0000] [4264] [ERROR] Worker (pid:4270) was sent SIGTERM!
+[2025-01-15 02:54:59 +0000] [4264] [ERROR] Worker (pid:4271) was sent SIGTERM!
+[2025-01-15 02:54:59 +0000] [4264] [INFO] Shutting down: Master
+[2025-01-15 02:55:04 +0000] [7424] [INFO] Starting gunicorn 23.0.0
+[2025-01-15 02:55:04 +0000] [7424] [INFO] Listening at: http://127.0.0.1:8000 (7424)
+[2025-01-15 02:55:04 +0000] [7424] [INFO] Using worker: sync
+[2025-01-15 02:55:04 +0000] [7426] [INFO] Booting worker with pid: 7426
+[2025-01-15 02:55:04 +0000] [7427] [INFO] Booting worker with pid: 7427
+[2025-01-15 02:55:04 +0000] [7428] [INFO] Booting worker with pid: 7428
+[2025-01-15 02:55:04 +0000] [7431] [INFO] Booting worker with pid: 7431
+[2025-01-15 02:55:21,930] ERROR in app: Exception on /choice/1 [GET]
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/routes/choices.py", line 37, in get
+    return {"choices":[{"id":choice.id,"content":choice.content,"is_active":choice.is_active,"sqe":choice.sqe}for choice in choices]}
+                                                                                                                            ^^^^^^^
+TypeError: 'Choices' object is not iterable
+[2025-01-15 02:57:10,298] ERROR in app: Exception on /choice/1 [GET]
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/routes/choices.py", line 37, in get
+    return {"choices":[{"id":choice.id,"content":choice.content,"is_active":choice.is_active,"sqe":choice.sqe}for choice in choices]}
+                                                                                                                            ^^^^^^^
+TypeError: 'Choices' object is not iterable
+[2025-01-15 02:57:53,390] ERROR in app: Exception on /choice/1 [GET]
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/routes/choices.py", line 37, in get
+    return {"choices":[{"id":choice.id,"content":choice.content,"is_active":choice.is_active,"sqe":choice.sqe}for choice in choices]}
+                                                                                                                            ^^^^^^^
+TypeError: 'Choices' object is not iterable
+[2025-01-15 02:58:23 +0000] [7424] [INFO] Handling signal: term
+[2025-01-15 02:58:23 +0000] [7426] [INFO] Worker exiting (pid: 7426)
+[2025-01-15 02:58:23 +0000] [7427] [INFO] Worker exiting (pid: 7427)
+[2025-01-15 02:58:23 +0000] [7428] [INFO] Worker exiting (pid: 7428)
+[2025-01-15 02:58:23 +0000] [7431] [INFO] Worker exiting (pid: 7431)
+[2025-01-15 02:58:24 +0000] [7424] [ERROR] Worker (pid:7426) was sent SIGTERM!
+[2025-01-15 02:58:24 +0000] [7424] [ERROR] Worker (pid:7427) was sent SIGTERM!
+[2025-01-15 02:58:24 +0000] [7424] [INFO] Shutting down: Master
+[2025-01-15 02:58:26 +0000] [8681] [INFO] Starting gunicorn 23.0.0
+[2025-01-15 02:58:26 +0000] [8681] [INFO] Listening at: http://127.0.0.1:8000 (8681)
+[2025-01-15 02:58:26 +0000] [8681] [INFO] Using worker: sync
+[2025-01-15 02:58:26 +0000] [8683] [INFO] Booting worker with pid: 8683
+[2025-01-15 02:58:26 +0000] [8684] [INFO] Booting worker with pid: 8684
+[2025-01-15 02:58:26 +0000] [8687] [INFO] Booting worker with pid: 8687
+[2025-01-15 02:58:26 +0000] [8688] [INFO] Booting worker with pid: 8688
+[2025-01-15 02:58:31,020] ERROR in app: Exception on /choice/1 [GET]
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/routes/choices.py", line 36, in get
+    choices = Choices.query.get_or_404(question_id=question_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Query.get_or_404() got an unexpected keyword argument 'question_id'
+[2025-01-15 02:59:53 +0000] [8681] [INFO] Handling signal: term
+[2025-01-15 02:59:53 +0000] [8683] [INFO] Worker exiting (pid: 8683)
+[2025-01-15 02:59:53 +0000] [8684] [INFO] Worker exiting (pid: 8684)
+[2025-01-15 02:59:53 +0000] [8687] [INFO] Worker exiting (pid: 8687)
+[2025-01-15 02:59:53 +0000] [8688] [INFO] Worker exiting (pid: 8688)
+[2025-01-15 02:59:53 +0000] [8681] [ERROR] Worker (pid:8683) was sent SIGTERM!
+[2025-01-15 02:59:53 +0000] [8681] [ERROR] Worker (pid:8684) was sent SIGTERM!
+[2025-01-15 02:59:53 +0000] [8681] [INFO] Shutting down: Master
+[2025-01-15 02:59:56 +0000] [9474] [INFO] Starting gunicorn 23.0.0
+[2025-01-15 02:59:56 +0000] [9474] [INFO] Listening at: http://127.0.0.1:8000 (9474)
+[2025-01-15 02:59:56 +0000] [9474] [INFO] Using worker: sync
+[2025-01-15 02:59:56 +0000] [9476] [INFO] Booting worker with pid: 9476
+[2025-01-15 02:59:56 +0000] [9477] [INFO] Booting worker with pid: 9477
+[2025-01-15 02:59:56 +0000] [9478] [INFO] Booting worker with pid: 9478
+[2025-01-15 02:59:56 +0000] [9481] [INFO] Booting worker with pid: 9481
+[2025-01-15 03:00:01,985] ERROR in app: Exception on /choice/1 [GET]
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/routes/choices.py", line 36, in get
+    choices = Choices.query.get_or_404(question_id=question_id).all()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Query.get_or_404() got an unexpected keyword argument 'question_id'
+[2025-01-15 03:02:32 +0000] [9474] [INFO] Handling signal: term
+[2025-01-15 03:02:32 +0000] [9476] [INFO] Worker exiting (pid: 9476)
+[2025-01-15 03:02:32 +0000] [9477] [INFO] Worker exiting (pid: 9477)
+[2025-01-15 03:02:32 +0000] [9478] [INFO] Worker exiting (pid: 9478)
+[2025-01-15 03:02:32 +0000] [9481] [INFO] Worker exiting (pid: 9481)
+[2025-01-15 03:02:32 +0000] [9474] [ERROR] Worker (pid:9476) was sent SIGTERM!
+[2025-01-15 03:02:32 +0000] [9474] [ERROR] Worker (pid:9477) was sent SIGTERM!
+[2025-01-15 03:02:33 +0000] [9474] [ERROR] Worker (pid:9478) was sent SIGTERM!
+[2025-01-15 03:02:33 +0000] [9474] [ERROR] Worker (pid:9481) was sent SIGTERM!
+[2025-01-15 03:02:33 +0000] [9474] [INFO] Shutting down: Master
+[2025-01-15 03:02:37 +0000] [10487] [INFO] Starting gunicorn 23.0.0
+[2025-01-15 03:02:37 +0000] [10487] [INFO] Listening at: http://127.0.0.1:8000 (10487)
+[2025-01-15 03:02:37 +0000] [10487] [INFO] Using worker: sync
+[2025-01-15 03:02:37 +0000] [10489] [INFO] Booting worker with pid: 10489
+[2025-01-15 03:02:37 +0000] [10492] [INFO] Booting worker with pid: 10492
+[2025-01-15 03:02:38 +0000] [10493] [INFO] Booting worker with pid: 10493
+[2025-01-15 03:02:38 +0000] [10494] [INFO] Booting worker with pid: 10494
+[2025-01-15 03:02:40,645] ERROR in app: Exception on /choice/1 [GET]
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/routes/choices.py", line 36, in get
+    choices = Choices.filter_by(question_id=question_id).all()
+              ^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Choices' has no attribute 'filter_by'
+[2025-01-15 03:02:44,945] ERROR in app: Exception on /choice/1 [GET]
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/routes/choices.py", line 36, in get
+    choices = Choices.filter_by(question_id=question_id).all()
+              ^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Choices' has no attribute 'filter_by'
+[2025-01-15 03:02:45,524] ERROR in app: Exception on /choice/1 [GET]
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/routes/choices.py", line 36, in get
+    choices = Choices.filter_by(question_id=question_id).all()
+              ^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Choices' has no attribute 'filter_by'
+[2025-01-15 03:02:45,922] ERROR in app: Exception on /choice/1 [GET]
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/routes/choices.py", line 36, in get
+    choices = Choices.filter_by(question_id=question_id).all()
+              ^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Choices' has no attribute 'filter_by'
+[2025-01-15 03:04:54 +0000] [10487] [INFO] Handling signal: term
+[2025-01-15 03:04:54 +0000] [10489] [INFO] Worker exiting (pid: 10489)
+[2025-01-15 03:04:54 +0000] [10492] [INFO] Worker exiting (pid: 10492)
+[2025-01-15 03:04:54 +0000] [10493] [INFO] Worker exiting (pid: 10493)
+[2025-01-15 03:04:54 +0000] [10494] [INFO] Worker exiting (pid: 10494)
+[2025-01-15 03:04:54 +0000] [10487] [ERROR] Worker (pid:10489) was sent SIGTERM!
+[2025-01-15 03:04:54 +0000] [10487] [ERROR] Worker (pid:10492) was sent SIGTERM!
+[2025-01-15 03:04:54 +0000] [10487] [INFO] Shutting down: Master
+[2025-01-15 03:04:56 +0000] [11432] [INFO] Starting gunicorn 23.0.0
+[2025-01-15 03:04:56 +0000] [11432] [INFO] Listening at: http://127.0.0.1:8000 (11432)
+[2025-01-15 03:04:56 +0000] [11432] [INFO] Using worker: sync
+[2025-01-15 03:04:56 +0000] [11434] [INFO] Booting worker with pid: 11434
+[2025-01-15 03:04:56 +0000] [11437] [INFO] Booting worker with pid: 11437
+[2025-01-15 03:04:56 +0000] [11438] [INFO] Booting worker with pid: 11438
+[2025-01-15 03:04:56 +0000] [11439] [INFO] Booting worker with pid: 11439
+[2025-01-15 03:06:23 +0000] [11432] [INFO] Handling signal: term
+[2025-01-15 03:06:23 +0000] [11434] [INFO] Worker exiting (pid: 11434)
+[2025-01-15 03:06:23 +0000] [11437] [INFO] Worker exiting (pid: 11437)
+[2025-01-15 03:06:23 +0000] [11438] [INFO] Worker exiting (pid: 11438)
+[2025-01-15 03:06:23 +0000] [11439] [INFO] Worker exiting (pid: 11439)
+[2025-01-15 03:06:23 +0000] [11432] [ERROR] Worker (pid:11434) was sent SIGTERM!
+[2025-01-15 03:06:23 +0000] [11432] [ERROR] Worker (pid:11437) was sent SIGTERM!
+[2025-01-15 03:06:23 +0000] [11432] [INFO] Shutting down: Master
+[2025-01-15 03:06:28 +0000] [12728] [INFO] Starting gunicorn 23.0.0
+[2025-01-15 03:06:28 +0000] [12728] [INFO] Listening at: http://127.0.0.1:8000 (12728)
+[2025-01-15 03:06:28 +0000] [12728] [INFO] Using worker: sync
+[2025-01-15 03:06:28 +0000] [12730] [INFO] Booting worker with pid: 12730
+[2025-01-15 03:06:28 +0000] [12731] [INFO] Booting worker with pid: 12731
+[2025-01-15 03:06:28 +0000] [12735] [INFO] Booting worker with pid: 12735
+[2025-01-15 03:06:28 +0000] [12734] [INFO] Booting worker with pid: 12734
+[2025-01-15 03:07:48 +0000] [12728] [INFO] Handling signal: term
+[2025-01-15 03:07:48 +0000] [12730] [INFO] Worker exiting (pid: 12730)
+[2025-01-15 03:07:48 +0000] [12731] [INFO] Worker exiting (pid: 12731)
+[2025-01-15 03:07:48 +0000] [12734] [INFO] Worker exiting (pid: 12734)
+[2025-01-15 03:07:48 +0000] [12735] [INFO] Worker exiting (pid: 12735)
+[2025-01-15 03:07:49 +0000] [12728] [ERROR] Worker (pid:12730) was sent SIGTERM!
+[2025-01-15 03:07:49 +0000] [12728] [ERROR] Worker (pid:12731) was sent SIGTERM!
+[2025-01-15 03:07:49 +0000] [12728] [INFO] Shutting down: Master
+[2025-01-15 03:08:00 +0000] [13420] [INFO] Starting gunicorn 23.0.0
+[2025-01-15 03:08:00 +0000] [13420] [INFO] Listening at: http://127.0.0.1:8000 (13420)
+[2025-01-15 03:08:00 +0000] [13420] [INFO] Using worker: sync
+[2025-01-15 03:08:00 +0000] [13422] [INFO] Booting worker with pid: 13422
+[2025-01-15 03:08:00 +0000] [13425] [INFO] Booting worker with pid: 13425
+[2025-01-15 03:08:00 +0000] [13426] [INFO] Booting worker with pid: 13426
+[2025-01-15 03:08:00 +0000] [13427] [INFO] Booting worker with pid: 13427
+[2025-01-15 03:08:25,929] ERROR in app: Exception on /question/1 [GET]
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/routes/questions.py", line 53, in get
+    for choice in Choices.query.filter_by(question_id=question.id).all()
+                  ^^^^^^^
+NameError: name 'Choices' is not defined
+[2025-01-15 03:08:32,896] ERROR in app: Exception on /question/1 [GET]
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/routes/questions.py", line 53, in get
+    for choice in Choices.query.filter_by(question_id=question.id).all()
+                  ^^^^^^^
+NameError: name 'Choices' is not defined
+[2025-01-15 03:08:42,863] ERROR in app: Exception on /question/1 [GET]
+Traceback (most recent call last):
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/.venv/lib64/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/flask_miniproject1/app/routes/questions.py", line 53, in get
+    for choice in Choices.query.filter_by(question_id=question.id).all()
+                  ^^^^^^^
+NameError: name 'Choices' is not defined
+[2025-01-15 03:10:00 +0000] [13420] [INFO] Handling signal: term
+[2025-01-15 03:10:00 +0000] [13422] [INFO] Worker exiting (pid: 13422)
+[2025-01-15 03:10:00 +0000] [13425] [INFO] Worker exiting (pid: 13425)
+[2025-01-15 03:10:00 +0000] [13426] [INFO] Worker exiting (pid: 13426)
+[2025-01-15 03:10:00 +0000] [13427] [INFO] Worker exiting (pid: 13427)
+[2025-01-15 03:10:00 +0000] [13420] [ERROR] Worker (pid:13422) was sent SIGTERM!
+[2025-01-15 03:10:00 +0000] [13420] [ERROR] Worker (pid:13425) was sent SIGTERM!
+[2025-01-15 03:10:00 +0000] [13420] [INFO] Shutting down: Master
+[2025-01-15 03:10:02 +0000] [13963] [INFO] Starting gunicorn 23.0.0
+[2025-01-15 03:10:02 +0000] [13963] [INFO] Listening at: http://127.0.0.1:8000 (13963)
+[2025-01-15 03:10:02 +0000] [13963] [INFO] Using worker: sync
+[2025-01-15 03:10:02 +0000] [13965] [INFO] Booting worker with pid: 13965
+[2025-01-15 03:10:02 +0000] [13966] [INFO] Booting worker with pid: 13966
+[2025-01-15 03:10:02 +0000] [13969] [INFO] Booting worker with pid: 13969
+[2025-01-15 03:10:02 +0000] [13970] [INFO] Booting worker with pid: 13970
