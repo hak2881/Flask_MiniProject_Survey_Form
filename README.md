@@ -17,9 +17,12 @@
 
 ## 🐤 데모
 > 아래는 애플리케이션 실행 화면 예시입니다.  
-(이미지를 업로드하거나, [데모 링크](https://github.com/hak2881/flask_miniproject1.git) 참고)
 
-![설문조사 데모](https://github.com/user-attachments/assets/35348d4d-aea6-44bd-aedf-bb71df3a607c)
+
+
+https://github.com/user-attachments/assets/d8506c51-fba6-4e8b-9759-fa21a4ebc5c4
+
+
 
 ---
 
