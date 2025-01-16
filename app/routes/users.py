@@ -17,7 +17,7 @@ class UserCreate(MethodView):
         )
         existing_user = User.query.filter_by(email=new_user.email).first()
         if existing_user:
-            return jsonify({"ValueError": "이미 존재하는 계정 입니다."}), 400
+            return jsonify({"ValueError": "이미 존재하는 계정 입니다."}), 409
         db.session.add(new_user)
         db.session.commit()
         return jsonify({"message": f"{new_user.name}님 회원가입을 축하합니다",
