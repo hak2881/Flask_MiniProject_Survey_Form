@@ -32,6 +32,7 @@ def create_app():
     from .routes.choices import choices_blp
     from .routes.users import user_blp
     from .routes.answers import answer_blp
+    from .routes.stats_routes import stats_routes
     
     api.register_blueprint(question_blp)
     api.register_blueprint(image_blp)
@@ -39,6 +40,7 @@ def create_app():
     api.register_blueprint(user_blp)
     api.register_blueprint(answer_blp)
     api.register_blueprint(questions_blp)
+    api.register_blueprint(stats_routes)
     
     @application.route('/')
     def home():

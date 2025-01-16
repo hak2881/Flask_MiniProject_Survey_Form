@@ -17,11 +17,11 @@ class UserCreate(MethodView):
         )
         existing_user = User.query.filter_by(email=new_user.email).first()
         if existing_user:
-            return jsonify({"message": "이미 존재하는 계정 입니다."}), 400
+            return jsonify({"ValueError": "이미 존재하는 계정 입니다."}), 400
         db.session.add(new_user)
         db.session.commit()
-        return jsonify({"message": "User님 회원가입을 축하합니다",
-                        "user_id": new_user.name}), 201
+        return jsonify({"message": f"{new_user.name}님 회원가입을 축하합니다",
+                        "user_id": new_user.id}), 201
 
     def get(self):
         users = User.query.all()
